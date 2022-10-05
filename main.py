@@ -7,7 +7,7 @@ import time
 import csv
 
 starturl = "https://exoplanets.nasa.gov/exoplanet-catalog/"
-browser = webdriver.Chrome("C:\Users\ramsh\OneDrive\Desktop\whitehat\c127\chromedriver.exe")
+browser = webdriver.Chrome("chromedriver.exe")
 browser.get(starturl)
 time.sleep(10)
 
@@ -29,7 +29,8 @@ def scrap():
                     except :
                         temp_list.append('')
             planet_data.append(temp_list)
-        browser.find_element_by_XPATH('//*[@id="primary_column"]/footer/div/div/div/nav/span[2]/a').click()
+        # browser.find_element('XPATH','//*[@id="primary_column"]/footer/div/div/div/nav/span[2]/a').click()
+        browser.find_element("xpath", value='//*[@id="primary_column"]/footer/div/div/div/nav/span[2]/a').click()
     with open('scrapper_2.csv','w')as f:
         csvWritter = csv.writer(f)
         csvWritter.writerow(headers)
